@@ -3,6 +3,8 @@
 <head>
     <title>Study Schedule App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4f46e5">
 </head>
 <body>
     <div class="container">
@@ -11,11 +13,17 @@
         <input type="time" id="studyTime">
         <input type="text" id="subject" placeholder="Enter subject">
         <button onclick="addSchedule()">Add Schedule</button>
-        <button onclick="ok()">OK</button>
 
         <ul id="scheduleList"></ul>
     </div>
 
     <script src="script.js"></script>
+
+    <script>
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("./sw.js")
+            .then(() => console.log("PWA ready"));
+    }
+    </script>
 </body>
 </html>
